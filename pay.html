@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payant Inline</title>
+	<script src="https://api.demo.payant.ng/assets/js/inline.min.js"></script>
+</head>
+<body>
+
+	<form>
+  		<button type="button" onclick="payWithPayant()"> Pay </button> 
+	</form>
+ 
+<script>
+  function payWithPayant() {
+    var handler = Payant.invoice({
+      "key": "8ea197499490350f649f2daabd5f5a5567511335",
+      "client": {
+            "first_name": "Alaba",
+            "last_name": "Mustapha",
+            "email": "musty@gmail.com",
+            "phone": "+2348012345678"
+        },
+      "due_date": "12/30/2020",
+      "fee_bearer": "client",
+      "items": [
+        {
+          "item": "skipping rope",
+          "description": "gym equipment",
+          "unit_cost": "2500.00",
+          "quantity": "1"
+        }
+      ],
+      callback: function(response) {
+        console.log(response);
+      },
+      onClose: function() {
+        console.log('Window Closed.');
+      }
+    });
+
+    handler.openIframe();
+  }
+</script>
+
+
+</body>
+</html>
